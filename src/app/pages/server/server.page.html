@@ -1,0 +1,39 @@
+
+<ion-header page-server-header class="page-server-header">
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Detail Server</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="showPopover($event)"><ion-icon name="ellipsis-vertical-outline"></ion-icon></ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+	<ion-toolbar app-searchbar color="primary">
+		<ion-searchbar  [(ngModel)]="filterQuery" (ionInput)="filterItems($event)" ></ion-searchbar>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content page-server-content class="page-server-content " >
+	
+	<ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	
+	<ion-list *ngIf="filterDataServer.length == 0">
+		<ion-item>No item!</ion-item>
+	</ion-list>
+	
+	<ion-list>
+		<ion-item *ngFor="let item of filterDataServer" button [routerDirection]="'forward'" [routerLink]="['/','server-detail',item.id]"  >
+		{{ item.servername }}
+		</ion-item>
+	</ion-list>
+	
+	<ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="loadMore($event)">
+		<ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
+</ion-content>

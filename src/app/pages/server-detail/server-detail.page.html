@@ -1,0 +1,28 @@
+
+<ion-header page-server-detail-header class="page-server-detail-header">
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Detail</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="showPopover($event)"><ion-icon name="ellipsis-vertical-outline"></ion-icon></ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content page-server-detail-content class="page-server-detail-content " >
+	
+	<ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	
+	
+	<ion-card *ngIf="dataServer">
+		{{ dataServer.servername }}
+		{{ dataServer.address }}
+	</ion-card>
+
+</ion-content>

@@ -1,0 +1,22 @@
+
+<ion-header page-smarthome-header class="page-smarthome-header">
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Smarthome</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="showPopover($event)"><ion-icon name="ellipsis-vertical-outline"></ion-icon></ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content page-smarthome-content class="page-smarthome-content " >
+<ion-list *ngIf="saklars">
+  <ion-item *ngFor="let s of saklars">
+    <ion-label>{{s.name}}</ion-label>
+    <ion-toggle [(ngModel)]="s.gpio" (ionChange)="sChange(s.name,s.gpio)"></ion-toggle>
+  </ion-item>
+</ion-list>
+</ion-content>

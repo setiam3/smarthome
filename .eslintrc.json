@@ -1,4 +1,6 @@
 {
+  "quotes": "off",
+  "@typescript-eslint/quotes": ["error"],
   "root": true,
   "ignorePatterns": ["projects/**/*"],
   "overrides": [

@@ -1,0 +1,52 @@
+{
+  "todos": [],
+  "server": [
+    {
+      "ip": "192.138.13.1",
+      "text": "skl1",
+      "id": 1
+    },
+    {
+      "ip": "192.138.13.2",
+      "text": "skl2",
+      "id": 2
+    },
+    {
+      "ip": "192.138.13.3",
+      "text": "skl3",
+      "id": 3
+    }
+  ],
+  "slider": [
+    
+      {
+        "id": 0,
+        "src": "https://i0.wp.com/rsudibnusina.gresikkab.go.id/wp-content/uploads/2022/03/banner-HUT-web.jpg?w=640&#038;ssl=1"
+      },
+      {
+        "id": 1,
+        "src": "https://i0.wp.com/rsudibnusina.gresikkab.go.id/wp-content/uploads/2021/08/hut-ri-resmi.jpg?w=640&#038;ssl=1"
+      },
+      {
+        "id": 2,
+        "src": "https://i0.wp.com/rsudibnusina.gresikkab.go.id/wp-content/uploads/2021/06/banner-web-surat-sehat.jpg?w=640&#038;ssl=1"
+      },
+      {
+        "id": 3,
+        "src": "https://i0.wp.com/rsudibnusina.gresikkab.go.id/wp-content/uploads/2021/06/ukuran-banner-web2.jpg?w=640&#038;ssl=1"
+      },
+      {
+        "id": 4,
+        "src": "https://i0.wp.com/rsudibnusina.gresikkab.go.id/wp-content/uploads/2020/03/anugerahkemenkesri-scaled.jpg?w=640&#038;ssl=1"
+      },
+      {
+        "id": 5,
+        "src": "https://i0.wp.com/rsudibnusina.gresikkab.go.id/wp-content/uploads/2020/03/Survei-snars-2019-scaled.jpg?w=640&#038;ssl=1"
+      },
+      {
+        "id": 6,
+        "src": "https://i0.wp.com/rsudibnusina.gresikkab.go.id/wp-content/uploads/2020/03/Lapor-scaled.jpg?w=640&#038;ssl=1"
+      }
+    
+  ]
+}

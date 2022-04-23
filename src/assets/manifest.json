@@ -1,0 +1,16 @@
+{
+	"name": "Smarthome Lite",
+	"short_name": "Smarthome",
+	"start_url": "index.html",
+	"display": "standalone",
+	"icons":[{"src": "assets/icon/logo.png"}],
+	"prefer_related_applications": true,
+	"related_applications": [
+		{
+			"platform": "play",
+			"id": "com.imabuilder.v3.wawa.smarthome"
+		}
+	],
+	"background_color": "#a60009",
+	"theme_color": "lightcontent"
+}

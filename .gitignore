@@ -18,6 +18,9 @@ log.txt
 npm-debug.log*
 
 /.angular
+/.thumbnail
+/.trash
+/.nbproject
 /.idea
 /.ionic
 /.sass-cache
