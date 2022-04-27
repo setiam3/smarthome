@@ -37,7 +37,7 @@ export class SmarthomePage {
 		this.statusBar.overlaysWebView(false);
 		this.statusBar.backgroundColorByHexString("#a60009");
 		//crud.apiUrl="http://localhost:3000/server";
-		crud.apiUrl="http://192.168.1.1/gpio/index3.php?key=passwordku&";
+		crud.apiUrl="http://192.168.2.1/gpio/index3.php?key=passwordku&";
 		//crud.apiUrl="/assets/data/data.json";
 		this.store();
 		console.log(`SmarthomePage`,`pageName`,this.pageName);
@@ -58,26 +58,32 @@ export class SmarthomePage {
 	async store(){
 		await this.storage.create();
 	}
-	/**
-	* SmarthomePage:ngOnInit()
-	* @param string $url = 'http://ihsana.com/'
-	**/
+	public getItem(){
+		this.crud.apiUrl=this.crud.apiUrl.concat("list");
+		this.crud.list().subscribe(
+			data=>{
+				this.saklars=data['gpios'];
+				this.storage.set('gpios',data['gpios']);
+			}
+		);
+	}
 	public ngOnInit()
 	{	
 		this.storage.get('gpios').then(data=>{
 			if(data!==null){
 				this.saklars=data;
 			}else{
-				this.crud.apiUrl=this.crud.apiUrl.concat("list");
-				this.crud.list().subscribe(
-					data=>{
-						this.saklars=data['gpios'];
-						this.storage.set('gpios',data['gpios']);
-					}
-				);
+				this.getItem();
 			}
 		});//
 	} 
+	public doRefresh(refresher){
+		// this.saklars = [];
+		setTimeout(() => {
+			refresher.target.complete();
+		}, 100);
+		this.getItem();
+	}
 	
 	sChange(name,id){}
 

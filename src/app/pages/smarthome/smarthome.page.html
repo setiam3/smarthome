@@ -13,6 +13,10 @@
 
 
 <ion-content page-smarthome-content class="page-smarthome-content " >
+	<ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	
 <ion-list *ngIf="saklars">
   <ion-item *ngFor="let s of saklars">
     <ion-label>{{s.name}}</ion-label>
