@@ -3,24 +3,44 @@
 	<ion-toolbar color="primary">
 		<ion-buttons slot="start">
 			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
 		</ion-buttons>
 		<ion-title>Smarthome</ion-title>
 		<ion-buttons slot="end">
 			<ion-button (click)="showPopover($event)"><ion-icon name="ellipsis-vertical-outline"></ion-icon></ion-button>
 		</ion-buttons>
 	</ion-toolbar>
+	<ion-toolbar app-searchbar color="primary">
+		<ion-searchbar placeholder="{{ ''  }}" [(ngModel)]="filterQuery" (ionInput)="filterItems($event)" ></ion-searchbar>
+	</ion-toolbar>
 </ion-header>
 
 
 <ion-content page-smarthome-content class="page-smarthome-content " >
+	
 	<ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
 		<ion-refresher-content></ion-refresher-content>
 	</ion-refresher>
 	
-<ion-list *ngIf="saklars">
-  <ion-item *ngFor="let s of saklars">
-    <ion-label>{{s.name}}</ion-label>
-    <ion-toggle [(ngModel)]="s.gpio" (ionChange)="sChange(s.name,s.gpio)"></ion-toggle>
-  </ion-item>
-</ion-list>
+	<ion-list *ngIf="filterDataSmarthome.length == 0">
+		<ion-item>No item!</ion-item>
+	</ion-list>
+	
+	<ion-card>
+	<ion-list>
+		<ion-item *ngFor="let item of filterDataSmarthome"  >
+		<ion-label>{{item.name}}</ion-label>
+		<ion-toggle (ionChange)="sChange($event,item.gpio)" [checked]="item.status==='1'"></ion-toggle>
+		</ion-item>
+	</ion-list>
+	</ion-card>
+	<ion-card>
+      <ion-button (click)="allon()" size="large"> All On</ion-button>
+      <ion-button (click)="alloff()" color="danger" size="large"> All Off</ion-button>
+	</ion-card>
+	
+	<ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="loadMore($event)">
+		<ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
 </ion-content>

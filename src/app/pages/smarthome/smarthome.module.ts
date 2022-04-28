@@ -4,7 +4,7 @@
 * @version 01.01.01
 * @license licenses.txt
 *
-* @date 2022-04-20 02:36:25
+* @date 2022-04-28 02:56:07
 **/
 
 import { NgModule, LOCALE_ID } from "@angular/core";
@@ -21,6 +21,11 @@ import { StatusBar } from "@awesome-cordova-plugins/status-bar/ngx";
 import { SmarthomePageRoutingModule } from "./smarthome-routing.module";
 import { environment } from "./../../../../src/environments/environment";
 import { Globals } from "../../class/globals/globals";
+import { Observable } from "rxjs";
+import { SmarthomeService } from "./../../services/smarthome/smarthome.service";
+import { ViewChild } from "@angular/core";
+import { IonInfiniteScroll } from "@ionic/angular";
+import { Storage } from "@ionic/storage-angular";
 import { PopoverController } from "@ionic/angular";
 import { PopoverComponent } from "../../components/popover/popover.component";
 import { SmarthomePage } from "./smarthome.page";
@@ -49,6 +54,8 @@ registerLocaleData(localeEnGb, "en-GB");
 	providers: [
 	{ provide: LOCALE_ID, useValue: "en-GB" },
 			StatusBar,
+			SmarthomeService,
+			Storage,
 			PopoverController,
 			Globals
 	]

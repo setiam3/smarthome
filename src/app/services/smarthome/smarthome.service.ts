@@ -4,7 +4,7 @@
 * @version 01.01.01
 * @license licenses.txt
 *
-* @date 2022-04-20 02:36:25
+* @date 2022-04-28 02:56:07
 **/
 
 import { Injectable } from "@angular/core";
@@ -27,7 +27,7 @@ import { HttpHeaders } from "@angular/common/http";
 	providedIn: "root"
 })
 
-export class ServerService {
+export class SmarthomeService {
 	
 	constructor(
 		public httpClient: HttpClient,
@@ -43,14 +43,24 @@ export class ServerService {
 
 
 
-	urlListItem : string = "assets/data/server.json";
+	urlListItem : string = "assets/data/gpio.json";
 	loading: any ;
-	apiUrl:string="http://localhost:3000/todos";
-	headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-	/**
-	* getItems()
-	**/
+	list() {
+      let apiUrl = this.urlListItem;
+	  this.presentLoading();
+		return this.httpClient.get(apiUrl).pipe(
+		map(data=>{
+			this.dismissLoading();
+			this.showToast(`Successfully retrieved data!`);
+			return data
+		}),
+		catchError(err => {
+			this.showAlert(err.statusText,err.name,`Failed to retrieve data from server!`);
+			return throwError(err);
+		}),
+		);
+	}
 	getItems(): Observable<any>{
 		let apiUrl = this.urlListItem;
 		//console.log("apiUrl", apiUrl);
@@ -130,48 +140,8 @@ export class ServerService {
 		});
 		await alert.present();
 	}
-// Create
-create(data: any): Observable<any> {
-    let API_URL = `${this.apiUrl}`;
-    return this.httpClient.post(API_URL, data)
-      .pipe(
-        catchError(this.handleError)
-      )
-  }
-
-  // Read
-  list() {
-    return this.httpClient.get(`${this.apiUrl}`);
-  }
-
-  // Update
-  update(id: any, data: any): Observable<any> {
-    let API_URL = `${this.apiUrl}/${id}`;
-    return this.httpClient.put(API_URL, data, { headers: this.headers }).pipe(
-      catchError(this.handleError)
-    )
-  }
-
-  // Delete
-  delete(id: any): Observable<any> {
-    var API_URL = `${this.apiUrl}/${id}`;
-    return this.httpClient.delete(API_URL).pipe(
-      catchError(this.handleError)
-    )
-  }
-
-  // Handle API errors
-  handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    return throwError(
-      'Something bad happened; please try again later.');
-  };
+	
+	
 
 
 

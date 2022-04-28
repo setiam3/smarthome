@@ -1,4 +1,9 @@
 [page-smarthome-content]{
+	--background: url("../../../assets/images/background/bg-01.png") no-repeat center center / cover;
 }
 
+	ion-card {
+		--background: #fff;
+		opacity:0.8;
+	}
 

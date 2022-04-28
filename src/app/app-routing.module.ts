@@ -4,7 +4,7 @@
 * @version 01.01.01
 * @license licenses.txt
 *
-* @date 2022-04-20 02:36:25
+* @date 2022-04-28 02:56:07
 **/
 
 import { NgModule } from "@angular/core";
@@ -17,16 +17,12 @@ const routes: Routes = [
 		pathMatch: "full"
 	},
 	{
-		path: "server-detail",
-		loadChildren: () => import("./pages/server-detail/server-detail.module").then(m => m.ServerDetailPageModule)
-	},
-	{
-		path: "server-detail/:id",
-		loadChildren: () => import("./pages/server-detail/server-detail.module").then(m => m.ServerDetailPageModule)
-	},
-	{
 		path: "server",
 		loadChildren: () => import("./pages/server/server.module").then(m => m.ServerPageModule)
+	},
+	{
+		path: "setting",
+		loadChildren: () => import("./pages/setting/setting.module").then(m => m.SettingPageModule)
 	},
 	{
 		path: "smarthome",

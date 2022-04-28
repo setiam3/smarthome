@@ -4,7 +4,7 @@
 * @version 01.01.01
 * @license licenses.txt
 *
-* @date 2022-04-20 02:36:25
+* @date 2022-04-28 02:56:07
 **/
 
 import { NgModule } from "@angular/core";
@@ -27,7 +27,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { DirectivesModule } from "./directives/directives.module";
 import { PipesModule } from "./pipes/pipes.module";
 import { environment } from "./../../src/environments/environment";
-import { IonicStorageModule } from '@ionic/storage-angular';
 
 
 
@@ -40,8 +39,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 		BrowserModule,
 		HttpClientModule,
 		IonicModule.forRoot(),
-		AppRoutingModule,
-		IonicStorageModule.forRoot()
+		AppRoutingModule
 	],
 	providers: [
 		StatusBar,

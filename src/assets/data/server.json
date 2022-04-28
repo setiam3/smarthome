@@ -1,1 +1,19 @@
-[{"id":0,"servername":"pulo","address":"http:\/\/192.168.1.1\/gpio\/"},{"id":1,"servername":"dukun","address":"http:\/\/192.168.2.1\/gpio\/index3.php"}]
+{
+  "server": [
+    {
+      "id": 0,
+      "name": "Dui Purus Rutrum",
+      "server": "http://192.168.1.1"
+    },
+    {
+      "id": 1,
+      "name": "Eleifend Imperdiet Himenaeos",
+      "server": "http://192.168.2.1"
+    },
+    {
+      "server": "asd123",
+      "name": "asd",
+      "id": 2
+    }
+  ]
+}

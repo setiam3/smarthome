@@ -4,7 +4,7 @@
 * @version 01.01.01
 * @license licenses.txt
 *
-* @date 2022-04-20 02:36:25
+* @date 2022-04-28 02:56:07
 **/
 
 import { NgModule, LOCALE_ID } from "@angular/core";
@@ -18,14 +18,20 @@ import { DirectivesModule } from "./../../directives/directives.module";
 import { PipesModule } from "./../../pipes/pipes.module";
 import { ComponentsModule } from "./../../components/components.module";
 import { StatusBar } from "@awesome-cordova-plugins/status-bar/ngx";
-import { ServerDetailPageRoutingModule } from "./server-detail-routing.module";
+import { SettingPageRoutingModule } from "./setting-routing.module";
 import { environment } from "./../../../../src/environments/environment";
 import { Globals } from "../../class/globals/globals";
 import { Observable } from "rxjs";
-import { ServerService } from "./../../services/server/server.service";
+import { AlertController } from "@ionic/angular";
+import { SettingService } from "./../../services/setting/setting.service";
+import { Validators } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
+import { FormGroup } from "@angular/forms";
+import { FormControl } from "@angular/forms";
+import { Storage } from "@ionic/storage-angular";
 import { PopoverController } from "@ionic/angular";
 import { PopoverComponent } from "../../components/popover/popover.component";
-import { ServerDetailPage } from "./server-detail.page";
+import { SettingPage } from "./setting.page";
 
 
 /** i18n **/
@@ -43,17 +49,20 @@ registerLocaleData(localeEnGb, "en-GB");
 		DirectivesModule,
 		PipesModule,
 		ComponentsModule,
-		ServerDetailPageRoutingModule
+		SettingPageRoutingModule
 	],
-	declarations: [ServerDetailPage],
+	declarations: [SettingPage],
 	exports: [],
 	entryComponents: [],
 	providers: [
 	{ provide: LOCALE_ID, useValue: "en-GB" },
 			StatusBar,
-			ServerService,
+			AlertController,
+			SettingService,
+			FormBuilder,
+			Storage,
 			PopoverController,
 			Globals
 	]
 })
-export class ServerDetailPageModule {}
+export class SettingPageModule {}
